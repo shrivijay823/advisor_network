@@ -1,5 +1,5 @@
 # Advisor Network App(Python/Django) #
-Advisor network is a simple application built using django and rest framework where users can come and book an advisor for a call
+Advisor network is a simple web application built using django and rest framework where users can come and book an advisor for a call
 
 ## API's ##
 
