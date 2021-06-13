@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block addadv%}
+<div style="color:white" class="mt-5 ms-auto me-auto" id="addadv">
+    <form method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row ms-auto">
+            <div class="col">
+                <input type="text" class="form-control col-3" name="name" placeholder="*Advisor name" required>
+            </div>
+            <div class="col"><input type="file" id="file_input" class="form-control col-3" name="propic" accept="image/*" ></div>
+            <div class="col"> <button type="submit" class="btn btn-primary col-3">Add</button></div>
+        </div>
+    </form>
+</div>
+{%endblock%}

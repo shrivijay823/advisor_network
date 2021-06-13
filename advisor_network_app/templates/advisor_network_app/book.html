@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block booking%}
+    <div class="row text-center mt-3">
+        <div><img style="width: 300px;height: 300px;" class="rounded-circle" src="{{adv.dp.url}}" alt="dp"></div>
+        <p><h3>{{adv.name}}</h3></p>
+        <form class="align-items-center" method="POST" action="" autocomplete="off">
+            {% csrf_token %} 
+            <div class="row">
+                <div class="col mb-3 input-group">
+                    <label class="form-label">Date*</label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+                <div class="col mb-3 input-group">
+                    <label class="form-label">time*</label>
+                    <input type="time" name="time" class="form-control" required>
+                </div>
+                <div class="col mb-3 input-group">
+                    <label for="" class="visually-hidden"></label>
+                    <input class="form-control btn btn-primary" type="submit" value="Book a call">
+                </div>
+            </div>
+        </form>
+    </div>
+<script>
+    
+</script>
+{%endblock%}

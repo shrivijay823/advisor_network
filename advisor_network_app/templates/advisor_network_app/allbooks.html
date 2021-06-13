@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%block allbooks%}
+{% if bkings %}
+    <div class="row mt-5">
+        <div id="advtable" class="mx-auto">
+            <table class="table table-dark table-hover">    
+                <th><h2>Bookings</h2></th>  
+                <th></th>
+                <th></th>    
+                {%for bk in bkings%}
+                <tr>
+                    <td style="width: 100px;"><img id="propic" src="{{bk.advisor.dp.url}}" class="rounded-circle" alt="dp"></td>
+                    <td style="width: 40%;" class="align-middle">{{bk.advisor.name}}</td>
+                    <td style="width: 100px;" class="align-middle">{{bk.bktime}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+{%else%}
+    <h2>You have no bookings!</h2>
+{%endif%}
+{%endblock%}

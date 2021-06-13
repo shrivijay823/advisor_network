@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%block signinup%}
+<div class="row mt-5">
+    <div class="d-none d-md-none d-lg-block col-lg-7 col-0">
+    </div>
+    <!--signup-->
+    <div class="col-lg-5 col-md-12">
+        <div id="signup" class="mx-auto bg-white rounded text-dark">
+            <form class="m-2 g-3 needs-validation" method="POST" action="" autocomplete="off" novalidate>
+                {% csrf_token %}
+                <h2>Signup</h2>
+                <div class="mb-3">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-control" name="flnm" required>              
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" name="usnm" required>              
+                  </div>
+                <div class="mb-3">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control" name="email" required>              
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control" name="pwd" required>
+                </div>    
+                <input type="text" name="operation" value="signup" hidden>        
+                <button type="submit" class="btn btn-primary mb-2">Sign up</button>
+                <a id="signinlink" href="{% url 'advisor_network_app:signupin' 'login' %}" style="font-size: medium;">Login</a>
+            </form>
+            {% if msg %}
+                <div class="alert alert-warning ">
+                  <strong>{{msg}}</strong> 
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

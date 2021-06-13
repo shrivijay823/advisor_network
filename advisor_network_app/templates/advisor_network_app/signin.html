@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%block signinup%}
+<div class="row mt-5">
+    <div class="d-none d-md-none d-lg-block col-lg-7 col-0">
+    </div>
+     <!--signin-->
+    <div class="col-lg-5 col-md-12">
+      <div id="signin" class="mx-auto bg-white rounded text-dark">
+        <form class="m-2 g-3 needs-validation" method="POST" action="" autocomplete="off" novalidate >
+          {% csrf_token %}
+            <h2>Signin</h2>
+            {% if sesexp_msg %}
+            <div class="mb-3 text-danger"><strong>{{sesexp_msg}}</strong></div>
+            {% endif %}
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input type="text" name="usnm" class="form-control" required>              
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" name="pwd" class="form-control" required>
+            </div>   
+            <input type="text" name="operation" value="signin" hidden>         
+            <button type="submit" class="btn btn-primary mb-2">Login</button>
+            <a id="signuplink"  href="{% url 'advisor_network_app:signupin' 'register' %}" style="font-size: medium;">Sign up</a>
+        </form>
+        {% if msg %}
+              <div class="alert alert-warning ">
+                <strong>{{msg}}</strong> 
+              </div>
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+{%endblock%}
