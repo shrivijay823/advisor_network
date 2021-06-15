@@ -15,12 +15,14 @@ def error_404(request, exception):
 def Check_Autherized(request,user_id):
     token=request.COOKIES.get('jwt')
     if not token:
+        print('no token')
         logout(request)
         return False
     if token:
         try:
             payload=jwt.decode(token,'secret',algorithms='HS256')
             if payload['id']!=user_id:
+                print(user_id)
                 print('user not matching')
                 logout(request)
                 return False
@@ -105,7 +107,7 @@ class signinupview(View):
 class index(View):
     @never_cache
     def get(self,request,id=0):
-        if not Check_Autherized(request,id):
+        if not Check_Autherized(request,request.user.id):
             return HttpResponseRedirect(reverse('advisor_network_app:signupin',kwargs={'auth':'login'}))
         token=request.COOKIES.get('jwt')
         payload=jwt.decode(token,'secret',algorithms='HS256')
@@ -166,7 +168,7 @@ class index(View):
 
 class adminview(View):
     def get(self,request):
-        if request.user.is_authenticated:
+        if Check_Autherized(request,request.user.id):
             user=User.objects.filter(username=request.user.username)[0]
             if user.is_superuser:
                 return HttpResponseRedirect(reverse('advisor_network_app:adminview'))
@@ -187,7 +189,15 @@ class adminview(View):
                 user = authenticate(request, username=form['usnm'], password=form['pwd'])
                 if user is not None:
                     login(request, user)
-                    return HttpResponseRedirect(reverse('advisor_network_app:adminview'))
+                    payload={
+                    'id':admin[0].id,
+                    'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=60),
+                    'iat':datetime.datetime.utcnow()
+                    }
+                    token=jwt.encode(payload,'secret',algorithm='HS256')
+                    response=HttpResponseRedirect(reverse('advisor_network_app:adminview'))
+                    response.set_cookie(key='jwt',value=token,httponly=True)
+                    return response
                 else:
                    return HttpResponse('error!') 
         else:

@@ -12,14 +12,38 @@
             background-color: rgb(2, 2, 48);
             color: whitesmoke;
         }
-        @media screen and (max-width: 992px) {
+        @media screen and (max-width: 575.5px) {
+           #bookcall{
+               width: 70%;
+           }
+           #advisor-pic{
+             width: 70%;
+           }
+                     
+       }
+      @media screen and (min-width: 575.5px) and (max-width: 760px) {
+        #bookcall{
+            width: 80%;
+          }
+          #advisor-pic{
+             width: 80%;
+           }
+      }
+      @media screen and (min-width: 760.5px) and (max-width: 991.5px) {
+        #bookcall{
+            width: 60%;
+          }
+          #advisor-pic{
+             width: 85%;
+           }
+      }
+        @media screen and (min-width: 575.5px) and (max-width: 991.5px) {
           #signup{
             width: 50%;
           }
           #signin{
             width: 50%;
           }
-          
         }
         @media screen and (min-width: 992px) {
           #signup{
@@ -34,6 +58,9 @@
           #advtable{
             width: 70%;
           }
+          #bookcall{
+            width: 50%;
+          }
         }
         a{
           text-decoration: none;
@@ -41,6 +68,9 @@
         #propic{
           width: 80px;
           height:80px;
+        }
+        #advisor-pic{
+          height: 200px;
         }
     </style>
 </head>

@@ -1,27 +1,35 @@
 {%extends 'base.html'%}
 {%block booking%}
-    <div class="row text-center mt-3">
-        <div><img style="width: 300px;height: 300px;" class="rounded-circle" src="{{adv.dp.url}}" alt="dp"></div>
-        <p><h3>{{adv.name}}</h3></p>
-        <form class="align-items-center" method="POST" action="" autocomplete="off">
-            {% csrf_token %} 
-            <div class="row">
-                <div class="col mb-3 input-group">
-                    <label class="form-label">Date*</label>
-                    <input type="date" name="date" class="form-control" required>
+<div id="bookcall" class="row mt-5 ms-auto me-auto">
+    <form id="bookcallform" class="ms-auto me-auto" action="" method="post">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12  text-center">                        
+                <div class="mt-2">
+                    <img id="advisor-pic" class="shadow-lg rounded" src="{{adv.dp.url}}" alt="">
                 </div>
-                <div class="col mb-3 input-group">
-                    <label class="form-label">time*</label>
-                    <input type="time" name="time" class="form-control" required>
+                <div>
+                    <h3>{{adv.name}}</h3>
                 </div>
-                <div class="col mb-3 input-group">
-                    <label for="" class="visually-hidden"></label>
-                    <input class="form-control btn btn-primary" type="submit" value="Book a call">
+            </div> 
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 my-auto p-4">
+                <div class="">
+                    <div>
+                        <label for="">date</label>
+                    </div>
+                    <div>
+                        <input name="date" class="form-control" type="date">
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
-<script>
-    
-</script>
+                <div class="mt-1">
+                    <div><label for="">time</label></div>
+                    <div><input name="time" class="form-control" type="time"></div>
+                </div>
+                <div class="mt-3">
+                    <button class="form-control btn btn-primary mb-2" type="submit">Book for call</button>
+                </div>
+            </div>  
+        </div>             
+    </form>
+</div> 
 {%endblock%}
