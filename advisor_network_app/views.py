@@ -1,6 +1,6 @@
 import jwt,datetime
-from django.shortcuts import render,get_object_or_404
-from django.http import HttpResponse,HttpResponseRedirect, response
+from django.shortcuts import render
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,logout,login
 from django.views import View
 from django.contrib.auth.models import User
